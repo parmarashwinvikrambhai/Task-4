@@ -1,0 +1,107 @@
+ (1) Write queries to create a database structure as below
+           (i) Database name: global_garner
+
+  Ans--  "CREATE DATABASE global_garner";
+
+   (ii) Database tables:
+        employees => id, name, email(unique), mobile(unique), address, branch_id, city_id, state_id, country_id, active
+
+    Ans--
+   (1)      "CREATE TABLE employees(
+            id INT(5) AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(10),
+            email VARCHAR(15) UNIQUE,
+            mobile VARCHAR(12) UNIQUE,
+            address VARCHAR(30),
+            FOREIGN KEY (branch_id) REFERENCES branches(branch_id),
+            FOREIGN KEY (city_id) REFERENCES cities(city_id),
+            FOREIGN KEY (state_id) REFERENCES states(state_id),
+            FOREIGN KEY (country_id) REFERENCES  countries(country_id),
+            active BOOLEAN  
+             );"
+
+
+             INSERT INTO employees VALUES(1,'jay','jay45@gmail.com',4648623469,'paldi',2,1,2,1,true); 
+             INSERT INTO employees VALUES(2,'Aniket','aniket465@gmail.com',9756398764,'vejalpur',1,1,2,1,false); 
+             INSERT INTO employees VALUES(3,'ronak','ronak77465@gmail.com',8866398764,'satellite',1,2,2,1,true); 
+             INSERT INTO employees VALUES(4,'Anil','anil5@gmail.com',9756296364,'Vastral',1,1,1,1,false); 
+
+
+
+    (2)     "CREATE TABLE branches(
+            branch_id INT(5) AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(10),
+            FOREIGN KEY (city_id) REFERENCES cities(city_id),
+            FOREIGN KEY (state_id) REFERENCES states(state_id),
+            FOREIGN KEY (country_id) REFERENCES  countries(country_id)
+            );"
+
+             INSERT INTO branches VALUES(1,'surat'1,2,1); 
+             INSERT INTO branches VALUES(2,'Jodhpurs'2,2,1); 
+
+
+
+    (3)     "CREATE TABLE cities(
+            city_id INT(5) AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(10),
+            FOREIGN KEY (state_id) REFERENCES states(state_id),
+            FOREIGN KEY (country_id) REFERENCES  countries(country_id)
+            );"
+
+             INSERT INTO cities VALUES(1,'Ahmedabad'2,1);
+             INSERT INTO cities VALUES(2,'surendranagar'1,1); 
+
+
+
+    (4)      "CREATE TABLE states(
+            state_id INT(5) AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(10),
+            FOREIGN KEY (country_id) REFERENCES  countries(country_id)
+            );"
+
+             INSERT INTO states VALUES(1,'Maharashtra',1); 
+             INSERT INTO states VALUES(2,'tamil',2); 
+
+
+
+
+
+        
+    (5)     "CREATE TABLE countries(
+            country_id INT(5) AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(10)
+            );"
+
+             INSERT INTO countries VALUES(1,'india');
+             INSERT INTO countries VALUES(2,'india'); 
+
+
+(3) Write individual queries to get employees by a specific
+        select name,branch_id from employee where branch_id=1;
+        select name,city_id from employee where city_id=2;
+        select name,state_id from employee where state_id=2;
+        select name,country_id from employee where country_id=2;
+
+
+
+(4) Write a query to get unique employees by their names
+        SELECT DISTINCT name FROM employee;
+
+
+
+(5) The queries in (3) & (4) must return only those employees whose 'active' status is true
+
+        select name,branch_id from employee where status=true;
+        select name,state_id from employee where status=false;
+
+        select name,branch_id from employee where status=true;
+
+
+
+
+
+
+
+
+
+  
